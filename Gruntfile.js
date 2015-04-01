@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     wiredep: {
       target: {
-        src: 'app/index.html'
+        src: 'index.html'
       }
     },
     jshint: {
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          'app/static/js/app.js': ['src/js/*.js']
+          'dist/js/app.js': ['src/js/*.js']
         }
       }
     },
@@ -29,21 +29,19 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {
-          'app/static/css/app.css': 'src/sass/site.scss'
+          'dist/css/app.css': 'src/sass/site.scss'
         }
       }
     },
     watch: {
       all: {
-        files: ['src/js/*.js', 'src/sass/*.scss'],
+        files: ['src/js/*.js', 'src/sass/*.scss', 'index.html'],
         tasks: ['js', 'css'],
       }
     },
     connect: {
       server: {
         options: {
-          base: 'app',
-          livereload: true
         }
       }
     }
