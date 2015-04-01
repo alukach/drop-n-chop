@@ -37,11 +37,14 @@ module.exports = function(grunt) {
       all: {
         files: ['src/js/*.js', 'src/sass/*.scss', 'index.html'],
         tasks: ['js', 'css'],
+        options: { livereload: true },
       }
     },
     connect: {
       server: {
         options: {
+          livereload: true,
+          open: true,
         }
       }
     }
