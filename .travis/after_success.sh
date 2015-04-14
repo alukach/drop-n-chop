@@ -1,10 +1,25 @@
-if [ "$TRAVIS_BRANCH" != "master" ]; then
+if [ "$TRAVIS_BRANCH" != "$RELEASE_BRANCH" ]; then
+    echo "In branch '$TRAVIS_BRANCH', not '$RELEASE_BRANCH'. Not deploying."
     exit 0;
 fi
 
 # export GIT_COMMITTER_EMAIL=...
 # export GIT_COMMITTER_NAME=...
 
-git checkout gh-pages || exit
+echo "Checking out $SERVED_BRANCH..."
+git checkout $SERVED_BRANCH || exit
+
+echo "Merging $TRAVIS_COMMIT..."
 git merge "$TRAVIS_COMMIT" || exit
-git push ... # here need some authorization and url
+
+echo "Building..."
+grunt build || exit
+
+echo "Adding & committing..."
+git add -f ./dist || exit
+git commit -m "$TRAVIS_COMMIT"
+
+echo "Pushing..."
+git push
+
+echo "Success!"
