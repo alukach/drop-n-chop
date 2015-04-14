@@ -67,6 +67,12 @@ module.exports = function(grunt) {
       unit: {
           configFile: 'spec/karma.conf.js'
       }
+    },
+    'gh-pages': {
+        options: {
+          base: '.',
+        },
+        src: '**/*'
     }
   });
 

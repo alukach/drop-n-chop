@@ -5,4 +5,5 @@ before_install:
   - gem install sass
 before_script:
   - grunt build:basic
-after_success: .travis/after_success.sh
+after_success: # .travis/after_success.sh
+  - grunt gh-pages
