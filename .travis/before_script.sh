@@ -1,1 +1,1 @@
-grunt build || exit
+grunt build:basic || exit
