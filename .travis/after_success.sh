@@ -7,7 +7,7 @@ fi
 # export GIT_COMMITTER_NAME=...
 
 echo "Checking out $SERVED_BRANCH..."
-git fetch
+git fetch --all
 git checkout origin/$SERVED_BRANCH || exit
 
 echo "Merging $TRAVIS_COMMIT..."
