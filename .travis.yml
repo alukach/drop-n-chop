@@ -6,4 +6,6 @@ before_install:
 before_script:
   - grunt build:basic
 after_success: # .travis/after_success.sh
+  - git config --global user.email "travis@cugos.org"
+  - git config --global user.name "Travis CI"
   - grunt gh-pages
