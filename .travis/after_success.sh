@@ -8,7 +8,7 @@ fi
 
 echo "Checking out $SERVED_BRANCH..."
 git fetch
-git checkout $SERVED_BRANCH || exit
+git checkout origin/$SERVED_BRANCH || exit
 
 echo "Merging $TRAVIS_COMMIT..."
 git merge "$TRAVIS_COMMIT" || exit
