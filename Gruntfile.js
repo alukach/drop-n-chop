@@ -69,11 +69,11 @@ module.exports = function(grunt) {
       }
     },
     'gh-pages': {
-        options: {
-          base: '.',
-        },
-        src: '**/*'
-    }
+      options: {
+        base: '.'
+      },
+      src: ['**']
+    },
   });
 
   // Loading tasks.
@@ -84,6 +84,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-karma');
 
   // Tasks.
