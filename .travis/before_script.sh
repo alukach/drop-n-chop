@@ -1,1 +1,0 @@
-grunt build:basic || exit
