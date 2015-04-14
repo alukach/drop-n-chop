@@ -7,6 +7,7 @@ fi
 # export GIT_COMMITTER_NAME=...
 
 echo "Checking out $SERVED_BRANCH..."
+git fetch
 git checkout $SERVED_BRANCH || exit
 
 echo "Merging $TRAVIS_COMMIT..."
