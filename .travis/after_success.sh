@@ -21,4 +21,6 @@ git config --global user.name "Travis CI"
 git remote set-url origin https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git
 
 echo "Running gh-pages..."
-grunt gh-pages
+grunt gh-pages || exit
+
+echo "Successfully deployed to gh-pages"
