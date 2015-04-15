@@ -3,24 +3,11 @@ if [ "$TRAVIS_BRANCH" != "$RELEASE_BRANCH" ]; then
     exit 0;
 fi
 
-# export GIT_COMMITTER_EMAIL=...
-# export GIT_COMMITTER_NAME=...
+echo "Configuring git..."
+git config --global user.email "travis@cugos.org"
+git config --global user.name "Travis CI"
+git config credential.helper "store --file=.git/credentials"
+git remote set-url origin https://${GH_TOKEN}@github.com/alukach/drop-n-chop.git
 
-echo "Checking out $SERVED_BRANCH..."
-git fetch --all
-git checkout origin/$SERVED_BRANCH || exit
-
-echo "Merging $TRAVIS_COMMIT..."
-git merge "$TRAVIS_COMMIT" || exit
-
-echo "Building..."
-grunt build || exit
-
-echo "Adding & committing..."
-git add -f ./dist || exit
-git commit -m "$TRAVIS_COMMIT"
-
-echo "Pushing..."
-git push
-
-echo "Success!"
+echo "Running gh-pages..."
+grunt gh-pages
